@@ -1,41 +1,102 @@
 # Predicting Occupancy Rate of Government Housing Projects in India
 
-## Problem Statement
-This project aims to predict the percentage of government-developed houses that are occupied in each Indian state using publicly available housing data.
+## 📌 Overview
+This project uses Machine Learning to predict the **percentage of government-developed houses that are occupied** across Indian states.  
+It is built using **real housing data from the Indian Government (data.gov.in)** and focuses on understanding how project progress and investment relate to housing utilization.
 
-## Dataset
-Source: https://www.data.gov.in/sector/Housing  
-The dataset contains state-wise information on housing projects, investment, and physical progress.
+---
 
-## Approach
-- Data cleaning and preprocessing
-- Feature engineering (Occupancy Percentage)
-- Train-test split
-- Linear Regression model
-- Evaluation using RMSE
-- Visualization of actual vs predicted values
+##  Problem Statement
+Government housing projects involve significant investment, but not all completed houses are actually occupied.  
+The goal of this project is to **predict the occupancy percentage of completed houses** using project level and financial indicators, helping understand utilization trends.
 
-## Model Used
-- Linear Regression
+---
 
-## Evaluation Metric
-- Root Mean Squared Error (RMSE)
+##  Dataset
+- **Source:** https://www.data.gov.in/sector/Housing  
+- **Type:** State-wise aggregated government housing data  
+- **Features include:**
+  - Number of projects considered
+  - Investment amount
+  - Central assistance
+  - Houses involved
+  - Houses grounded
+  - Houses completed
+  - Houses occupied
 
-## Results
-The model captures the general trend between housing project progress and occupancy, with reasonable accuracy given the small dataset.
+---
 
-## Tools & Technologies
+##  Methodology
+1. **Data Cleaning**
+   - Renamed columns for clarity
+   - Handled missing values
+   - Removed invalid rows where completed houses = 0
+
+2. **Feature Engineering**
+   - Created a synthetic feature:
+     ```
+     Occupancy Percentage = (Houses Occupied / Houses Completed) × 100
+     ```
+
+3. **Modeling**
+   - Split data into training and testing sets (80/20)
+   - Trained a **Linear Regression** model
+
+4. **Evaluation**
+   - Used **Root Mean Squared Error (RMSE)** to measure prediction accuracy
+   - Visualized **Actual vs Predicted Occupancy Percentage**
+
+---
+
+##  Machine Learning Model
+- **Algorithm:** Linear Regression  
+- **Type:** Supervised Learning (Regression)
+
+---
+
+##  Evaluation Metric
+- **RMSE (Root Mean Squared Error)**  
+  Measures the average deviation between actual and predicted occupancy percentages.
+
+---
+
+##  Results
+- The model captures the **general trend** between housing project progress and occupancy.
+- Predictions are reasonably accurate given the **small, aggregated dataset**.
+- Scatter plot shows most predictions clustering around the ideal diagonal line.
+
+---
+
+##  Key Insights
+- Higher completion and grounding rates generally lead to higher occupancy.
+- Investment alone does not guarantee high occupancy completion efficiency matters.
+- Aggregated state-level data hides local factors influencing housing utilization.
+
+---
+
+##  Tools & Technologies
 - Python
 - pandas
+- NumPy
 - scikit-learn
 - matplotlib
 
-## Limitations
-- Small dataset (state-level aggregation)
-- No time-series information
-- State-specific policy factors not included
+---
 
-## Future Improvements
-- Try advanced models (Ridge, Random Forest)
+##  Limitations
+- Small dataset (state-level aggregation)
+- No time-series data
+- Policy, regional, and socio-economic factors not included
+- Model captures correlation, not causation
+
+---
+
+##  Future Improvements
+- Try advanced models (Ridge Regression, Random Forest)
 - Add more government datasets
-- Perform deeper exploratory data analysis
+- Include year-wise data for trend analysis
+- Perform deeper exploratory data analysis (EDA)
+
+---
+
+##  Project Structure
